@@ -1,5 +1,6 @@
 package com.example.padcc.visitorsapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,15 +31,12 @@ public class registrationActivity extends AppCompatActivity {
     DatabaseHandler db;
     ListView listView;
 
-    List<Visitor> visitorList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration2);
-
-        listView = (ListView) findViewById(R.id.listview1);
-        rg=(RadioGroup) findViewById(R.id.radioGroup);
 
         final TextView textViewResult=(TextView)findViewById(R.id.text2);
         Firstname=(EditText) findViewById(R.id.firsname);
@@ -48,6 +46,7 @@ public class registrationActivity extends AppCompatActivity {
         Technique=(EditText) findViewById(R.id.technique);
         male=(RadioButton) findViewById(R.id.Male);
         female=(RadioButton) findViewById(R.id.Female);
+
         submit=(Button) findViewById(R.id.submit1);
         cancle=(Button) findViewById(R.id.cancle1);
 
@@ -60,15 +59,22 @@ public class registrationActivity extends AppCompatActivity {
                 String fname,lname,phone,mail,technique;
                 String gender="";
 
-                int j=rg.getCheckedRadioButtonId();
-                RadioButton rb=(RadioButton)findViewById(j);
+
+                if (male.isChecked()) {
+
+                        gender="Male";
+                }else {
+                    gender="feMale";
+                }
+
 
                 fname =Firstname.getText().toString();
                 lname =Lastname.getText().toString();
                 phone =Phone.getText().toString();
                 technique=Technique.getText().toString();
                 mail =Email.getText().toString();
-                gender =rb.getText().toString();
+              //  gender =rb.getText().toString();
+
 
                 visitor.setVfirstnName(fname);
                 visitor.setVLastName(lname);
@@ -85,14 +91,6 @@ public class registrationActivity extends AppCompatActivity {
         cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                ArrayList<Visitor> visitorsList=db.getAllVisitors();
-
-                 textViewResult.setText("Name "+visitorsList.get(0).VfirstnName + " \nEmail " + visitorsList.get(0).VEmail + "\nGender " +visitorsList.get(0).Vgender);
-
-                Toast.makeText(getApplicationContext(),  "Firstname"+visitorsList.get(0).VfirstnName +" \n Lastname "
-                                +visitorsList.get(0).VLastName +" \nGender "+visitorsList.get(0).Vgender +" \n ",
-                        Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -112,52 +110,11 @@ public class registrationActivity extends AppCompatActivity {
 
             case R.id.item_view:
 
+                Intent intent=new Intent(registrationActivity.this,MainActivity.class);
+                startActivity(intent);
 
-                Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Visitors List",Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-    class CustomAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return visitorList.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
-
-            view = getLayoutInflater().inflate(R.layout.visitorslist, null);
-
-            TextView textViewfname1 = (TextView) view.findViewById(R.id.textfname);
-            TextView textViewlname1 = (TextView) view.findViewById(R.id.textlname);
-            TextView textViewephone1 = (TextView) view.findViewById(R.id.textphone);
-            TextView textViewemail1 = (TextView) view.findViewById(R.id.textemail);
-            TextView textViewtechnique1 = (TextView) view.findViewById(R.id.texttechnique);
-            TextView textViewgender1 = (TextView) view.findViewById(R.id.textgender);
-
-            textViewfname1.setText(visitorList.get(position).getVfirstnName());
-            textViewlname1.setText(visitorList.get(position).getVLastName());
-            textViewephone1.setText(visitorList.get(position).getVPhone());
-            textViewemail1.setText(visitorList.get(position).getVEmail());
-            textViewtechnique1.setText(visitorList.get(position).getVTechnique());
-            textViewgender1.setText(visitorList.get(position).getVgender());
-
-            return view;
-        }
-    }
-//
 }
