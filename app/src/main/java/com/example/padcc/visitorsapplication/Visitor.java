@@ -1,10 +1,12 @@
 package com.example.padcc.visitorsapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by padcc on 29/09/2018.
  */
 
-public class Visitor {
+public class Visitor implements Serializable {
     int visitorId;
     String VfirstnName,VLastName,VPhone,VEmail,VTechnique,Vgender;
 

@@ -24,6 +24,9 @@ TextView id2,fname2,lname2,phone2,email2,tech2,gender2;
         gender2=(TextView)findViewById(R.id.Dtextgender);
 
         Intent intent=getIntent();
+        Visitor visitor=(Visitor)intent.getSerializableExtra("visitor");
+
+
         String FName=intent.getStringExtra("firstname");
         String LName=intent.getStringExtra("lastname");
         String PHONE=intent.getStringExtra("phonenumber");
@@ -31,12 +34,12 @@ TextView id2,fname2,lname2,phone2,email2,tech2,gender2;
         String TECH=intent.getStringExtra("techni");
         String GENDER=intent.getStringExtra("gend");
 
-        fname2.setText(FName);
-        lname2.setText(LName);
-        phone2.setText(PHONE);
-        email2.setText(EMAIL);
-        tech2.setText(TECH);
-        gender2.setText(GENDER);
+        fname2.setText(visitor.getVfirstnName());
+        lname2.setText(visitor.getVLastName());
+        phone2.setText(visitor.getVPhone());
+        email2.setText(visitor.getVEmail());
+        tech2.setText(visitor.getVTechnique());
+        gender2.setText(visitor.getVgender());
 
     }
 

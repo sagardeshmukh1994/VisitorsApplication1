@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,12 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    //    fn=(TextView)findViewById(R.id.textfname);
-     //   ln=(TextView)findViewById(R.id.textlname);
-       // ph=(TextView)findViewById(R.id.textphone);
-     //   em=(TextView)findViewById(R.id.textemail);
-     // tech=(TextView)findViewById(R.id.texttechnique);
-       // gen=(TextView)findViewById(R.id.textgender);
+   
 
         btnview=(Button) findViewById(R.id.button_view);
 
@@ -40,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
         visitorList=db.getAllVisitors();
         CustomAdapter customAdapter=new CustomAdapter();
         listView.setAdapter(customAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                Intent intent=new Intent(MainActivity.this,Details.class);
+
+                intent.putExtra("visitor",visitorList.get(pos));
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -84,20 +90,20 @@ public class MainActivity extends AppCompatActivity {
             visitor.setVEmail(visitorList.get(position).getVEmail());
             visitor.setVTechnique(visitorList.get(position).getVTechnique());
             visitor.setVgender(visitorList.get(position).getVgender());
-            btnview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(MainActivity.this,Details.class);
-                intent.putExtra("firstname",visitor.getVfirstnName());
-                intent.putExtra("lastname",visitor.getVLastName());
-                intent.putExtra("phonenumber",visitor.getVPhone());
-                intent.putExtra("emailaddress",visitor.getVEmail());
-                intent.putExtra("techni",visitor.getVTechnique());
-                intent.putExtra("gend",visitor.getVgender());
-
-                    startActivity(intent);
-                }
-            });
+//            btnview.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent=new Intent(MainActivity.this,Details.class);
+//                intent.putExtra("firstname",visitor.getVfirstnName());
+//                intent.putExtra("lastname",visitor.getVLastName());
+//                intent.putExtra("phonenumber",visitor.getVPhone());
+//                intent.putExtra("emailaddress",visitor.getVEmail());
+//                intent.putExtra("techni",visitor.getVTechnique());
+//                intent.putExtra("gend",visitor.getVgender());
+//
+//                    startActivity(intent);
+//                }
+//            });
 
             return view;
         }
