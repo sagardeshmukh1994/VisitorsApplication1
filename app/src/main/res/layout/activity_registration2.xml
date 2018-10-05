@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<ScrollView    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout
@@ -85,10 +89,6 @@
        android:id="@+id/radioGroup"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical">
     <RadioButton
         android:id="@+id/Male"
         android:layout_width="match_parent"
@@ -105,34 +105,38 @@
         android:text="Female"
         android:paddingLeft="2dp"
         />
-       </LinearLayout>
    </RadioGroup>
 </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="2">
 
-        <Button
-            android:id="@+id/submit1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_weight="1"
-            android:background="#5ec639"/>
-        <Button
-            android:id="@+id/cancle1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:layout_alignParentBottom="true"
-            android:text="Cancle"
-            android:layout_weight="1"
-            android:background="#ea1313"/>
-
-    </LinearLayout>
 
 
 </LinearLayout>
 </ScrollView>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:weightSum="2">
+
+<Button
+    android:id="@+id/submit1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Submit"
+    android:layout_weight="1"
+    android:background="#5ec639"/>
+<Button
+    android:id="@+id/cancle1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|center"
+    android:layout_alignParentBottom="true"
+    android:text="Cancle"
+    android:layout_weight="1"
+    android:background="#ea1313"/>
+
+</LinearLayout>
+
+
+    </LinearLayout>

@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-   
-
         btnview=(Button) findViewById(R.id.button_view);
 
         listView = (ListView) findViewById(R.id.listview1);
@@ -46,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 
 
