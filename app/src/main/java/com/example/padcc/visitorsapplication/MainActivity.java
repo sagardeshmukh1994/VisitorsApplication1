@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnview=(Button) findViewById(R.id.button_view);
+      //  btnview=(Button) findViewById(R.id.button_view);
 
         listView = (ListView) findViewById(R.id.listview1);
         db=new DatabaseHandler(MainActivity.this);
@@ -69,35 +69,25 @@ public class MainActivity extends AppCompatActivity {
 
             view = getLayoutInflater().inflate(R.layout.visitorslist, null);
 
+             TextView textviewid=(TextView) view.findViewById(R.id.textid);
             final TextView textViewfname1 = (TextView) view.findViewById(R.id.textfname);
             final TextView textViewtechnique1 = (TextView) view.findViewById(R.id.texttechnique);
 
 
-            Button btnview=(Button)view.findViewById( R.id.button_view) ;
 
+
+            textviewid.setText(String.valueOf(visitorList.get(position).getVisitorId()));
             textViewfname1.setText(visitorList.get(position).getVfirstnName());
             textViewtechnique1.setText(visitorList.get(position).getVTechnique());
 
+            visitor.setVisitorId(visitorList.get(position).getVisitorId());
             visitor.setVfirstnName(visitorList.get(position).getVfirstnName());
             visitor.setVLastName(visitorList.get(position).getVLastName());
             visitor.setVPhone(visitorList.get(position).getVPhone());
             visitor.setVEmail(visitorList.get(position).getVEmail());
             visitor.setVTechnique(visitorList.get(position).getVTechnique());
             visitor.setVgender(visitorList.get(position).getVgender());
-//            btnview.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent=new Intent(MainActivity.this,Details.class);
-//                intent.putExtra("firstname",visitor.getVfirstnName());
-//                intent.putExtra("lastname",visitor.getVLastName());
-//                intent.putExtra("phonenumber",visitor.getVPhone());
-//                intent.putExtra("emailaddress",visitor.getVEmail());
-//                intent.putExtra("techni",visitor.getVTechnique());
-//                intent.putExtra("gend",visitor.getVgender());
-//
-//                    startActivity(intent);
-//                }
-//            });
+
 
             return view;
         }

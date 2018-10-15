@@ -59,14 +59,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues contentValues = new ContentValues();
 
-
+      //  contentValues.put(KEY_VISITOR_ID,visitor.getVisitorId());
         contentValues.put(KEY_VISITOR_FIRSTNAME, visitor.getVfirstnName());
         contentValues.put(KEY_VISITOR_LASTNAME,visitor.getVLastName());
         contentValues.put(KEY_PHONE,visitor.getVPhone());
         contentValues.put(KEY_EMAIL,visitor.getVEmail());
         contentValues.put(KEY_TECHNIQUE,visitor.getVTechnique());
         contentValues.put(KEY_GENDER,visitor.getVgender());
-       // contentValues.put(KEY_GENDER,visitor.getVFemale());
 
         Long result= db.insert(TABLE_VISITORS, null, contentValues);
         return result;
@@ -92,8 +91,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 visitor.setVEmail(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
                 visitor.setVTechnique(cursor.getString(cursor.getColumnIndex(KEY_TECHNIQUE)));
                 visitor.setVgender(cursor.getString(cursor.getColumnIndex(KEY_GENDER)));
-              //  visitor.setVMale(cursor.getString(cursor.getColumnIndex(KEY_MALE)));
-               // visitor.setVFemale(cursor.getString(cursor.getColumnIndex(KEY_FEMALE)));
 
                 visitors.add(visitor);
             } while (cursor.moveToNext());

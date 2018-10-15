@@ -15,7 +15,7 @@ TextView id2,fname2,lname2,phone2,email2,tech2,gender2;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        id2=(TextView)findViewById(R.id.Did);
+       id2=(TextView)findViewById(R.id.Did);
         fname2=(TextView)findViewById(R.id.Dtextfname);
         lname2=(TextView)findViewById(R.id.Dtextlname);
         phone2=(TextView)findViewById(R.id.Dtextphone);
@@ -27,13 +27,14 @@ TextView id2,fname2,lname2,phone2,email2,tech2,gender2;
         Visitor visitor=(Visitor)intent.getSerializableExtra("visitor");
 
 
-        String FName=intent.getStringExtra("firstname");
-        String LName=intent.getStringExtra("lastname");
-        String PHONE=intent.getStringExtra("phonenumber");
-        String EMAIL=intent.getStringExtra("emailaddress");
-        String TECH=intent.getStringExtra("techni");
-        String GENDER=intent.getStringExtra("gend");
+//        String FName=intent.getStringExtra("firstname");
+//        String LName=intent.getStringExtra("lastname");
+//        String PHONE=intent.getStringExtra("phonenumber");
+//        String EMAIL=intent.getStringExtra("emailaddress");
+//        String TECH=intent.getStringExtra("techni");
+//        String GENDER=intent.getStringExtra("gend");
 
+        id2.setText(String.valueOf(visitor.getVisitorId()));
         fname2.setText(visitor.getVfirstnName());
         lname2.setText(visitor.getVLastName());
         phone2.setText(visitor.getVPhone());

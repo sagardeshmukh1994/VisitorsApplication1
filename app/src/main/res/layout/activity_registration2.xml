@@ -64,15 +64,22 @@ android:layout_width="match_parent"
         android:hint="Enter Email"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
-    <EditText
-        android:id="@+id/technique"
+
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="left"
-        android:hint="Eneter language for enquary"
+        android:layout_height="55dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"></Spinner>
+    <!--<EditText-->
+        <!--android:id="@+id/technique"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="left"-->
+        <!--android:hint="Eneter language for enquary"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"/>-->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -81,15 +88,16 @@ android:layout_width="match_parent"
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
         android:text="Gender"
-        android:textSize="18dp"
-        android:paddingLeft="20dp"/>
+        android:textSize="18dp" />
 
    <RadioGroup
        android:id="@+id/radioGroup"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
-    <RadioButton
+
+       <RadioButton
         android:id="@+id/Male"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,14 +105,15 @@ android:layout_width="match_parent"
         android:text="Male"
         android:paddingLeft="2dp"
         />
-    <RadioButton
-        android:id="@+id/Female"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Female"
-        android:paddingLeft="2dp"
-        />
+
+       <RadioButton
+           android:id="@+id/Female"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:paddingLeft="2dp"
+           android:text="Female" />
+
    </RadioGroup>
 </LinearLayout>
 
@@ -113,30 +122,42 @@ android:layout_width="match_parent"
 </LinearLayout>
 </ScrollView>
 
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical"
-android:weightSum="2">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-<Button
-    android:id="@+id/submit1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Submit"
-    android:layout_weight="1"
-    android:background="#5ec639"/>
-<Button
-    android:id="@+id/cancle1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal|center"
-    android:layout_alignParentBottom="true"
-    android:text="Cancle"
-    android:layout_weight="1"
-    android:background="#ea1313"/>
+        <Button
+            android:id="@+id/submit1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/cancle1"
+            android:layout_alignLeft="@+id/cancle1"
+            android:layout_alignEnd="@+id/cancle1"
+            android:layout_alignRight="@+id/cancle1"
+            android:layout_alignBottom="@+id/cancle1"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="48dp"
+            android:layout_weight="1"
+            android:background="#5ec639"
+            android:paddingBottom="10dp"
+            android:text="Submit" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/cancle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_weight="1"
+            android:background="#ea1313"
+            android:onClick="onClick"
+            android:text="Cancle" />
+
+    </RelativeLayout>
 
 
     </LinearLayout>
