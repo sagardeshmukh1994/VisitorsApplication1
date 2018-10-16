@@ -36,6 +36,7 @@ public class registrationActivity extends AppCompatActivity implements View.OnCl
     DatabaseHandler db;
     ListView listView;
     ProgressDialog pd;
+    boolean flag=false;
 
 
 
@@ -49,7 +50,6 @@ public class registrationActivity extends AppCompatActivity implements View.OnCl
         Lastname=(EditText) findViewById(R.id.lastname);
         Phone=(EditText) findViewById(R.id.phone);
         Email=(EditText) findViewById(R.id.email);
-      //  Technique=(EditText) findViewById(R.id.technique);
         male=(RadioButton) findViewById(R.id.Male);
         female=(RadioButton) findViewById(R.id.Female);
         spinner=(Spinner)findViewById(R.id.spinner1);
@@ -87,32 +87,50 @@ public class registrationActivity extends AppCompatActivity implements View.OnCl
                 {
                     Toast.makeText(getApplicationContext(), "Firstnme Required", Toast.LENGTH_SHORT).show();
                 }
-                 else   if(lname.equalsIgnoreCase(""))
+                 else if(lname.equalsIgnoreCase(""))
                 {
                     Toast.makeText(getApplicationContext(), "Lasttnme Required", Toast.LENGTH_SHORT).show();
                 }
-                else   if(phone.equalsIgnoreCase(""))
+                else if(phone.equalsIgnoreCase(""))
                 {
                     Toast.makeText(getApplicationContext(), "Phone number Required", Toast.LENGTH_SHORT).show();
                 }
-                else   if(technique.equalsIgnoreCase(""))
+                else if(technique.equalsIgnoreCase(""))
                 {
                     Toast.makeText(getApplicationContext(), "Enquiry field Required", Toast.LENGTH_SHORT).show();
                 }
                  else if(mail.matches(emialpattern)) {
                     if ((phone.length() < 10 || phone.length() > 10)) {
                         Toast.makeText(getApplicationContext(), "Invalid phone number", Toast.LENGTH_SHORT).show();
-                    } else {
+                    }
+                    else {
                         visitor.setVfirstnName(fname);
                         visitor.setVLastName(lname);
                         visitor.setVPhone(phone);
                         visitor.setVEmail(mail);
                         visitor.setVTechnique(technique);
                         visitor.setVgender(gender);
-                        Long result = db.insertVisitor(visitor);
-                        Log.i("result :", String.valueOf(result));
-                        Toast.makeText(getApplicationContext(), "Registered successfully", Toast.LENGTH_SHORT).show();
+
+                        Intent intent=getIntent();
+                        String extrastring=intent.getStringExtra("value");
+
+                        if (intent.hasExtra("value")) {
+                            flag = true;
+
+                        }else {
+                            flag = false;
+                        }
+                        if (flag = false) {
+                            Long result = db.insertVisitor(visitor);
+                            Log.i("result :", String.valueOf(result));
+                            Toast.makeText(getApplicationContext(), "Registered successfully", Toast.LENGTH_SHORT).show();
+                        }else {
+                            submit.setText("Update");
+                            int result = db.UpdateVisitor(visitor);
+                            Toast.makeText(getApplicationContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
+                        }
                     }
+
                 }
         else {
             Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
