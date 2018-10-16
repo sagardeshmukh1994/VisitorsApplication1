@@ -71,6 +71,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public void deleteVisitors(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+       // db.execSQL("delete from "+ TABLE_VISITORS+ " WHERE "+KEY_VISITOR_ID+"='"+ visitor.getVisitorId());
+    }
+
+
+    public int UpdateVisitor (Visitor visitor) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+
+        contentValues.put(KEY_VISITOR_FIRSTNAME, visitor.getVfirstnName());
+        contentValues.put(KEY_VISITOR_LASTNAME,visitor.getVLastName());
+        contentValues.put(KEY_PHONE,visitor.getVPhone());
+        contentValues.put(KEY_EMAIL,visitor.getVEmail());
+        contentValues.put(KEY_TECHNIQUE,visitor.getVTechnique());
+        contentValues.put(KEY_GENDER,visitor.getVgender());
+
+        // Long result= db.update(TABLE_VISITORS, contentValues,KEY_VISITOR_ID+" ="+ visitor.getVisitorId(), );
+
+        int result=db.update(TABLE_VISITORS, contentValues,KEY_VISITOR_ID+" ="+ visitor.getVisitorId(),null);
+
+        //int result= db.update(TABLE_VISITORS,contentValues,KEY_VISITOR_ID + " = ?",new String[]{String.valueOf(visitor.getVisitorId())});
+        return result;
+    }
+
+
     public ArrayList<Visitor> getAllVisitors() {
         ArrayList<Visitor> visitors = new ArrayList<>();
 

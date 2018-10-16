@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Details extends AppCompatActivity {
 TextView id2,fname2,lname2,phone2,email2,tech2,gender2;
+//Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+//        submit=(Button)findViewById(R.id.submit1);
 
        id2=(TextView)findViewById(R.id.Did);
         fname2=(TextView)findViewById(R.id.Dtextfname);
@@ -57,6 +61,11 @@ TextView id2,fname2,lname2,phone2,email2,tech2,gender2;
 
             case R.id.itm_update:
 
+                String val = "intent";
+                Intent intent=new Intent(Details.this,registrationActivity.class);
+                intent.putExtra("value",val);
+                startActivity(intent);
+                break;
             case R.id.item_detete:
 
 
